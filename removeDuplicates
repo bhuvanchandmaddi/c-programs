@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+char* removeAllDuplicates(char* a){
+   int* b=(int*)calloc(256,sizeof(int));
+   for(int i=0;i<strlen(a);i++){
+       b[a[i]]++;
+   }
+   int count=0;
+   for(int i=0;i<strlen(a);i++){
+       if(b[a[i]]==1)
+         count++;
+   }
+   int j=0;
+      char* c=(char*)calloc(count+1,sizeof(char));
+ for(int i=0;i<strlen(a);i++){
+       if(b[a[i]]==1)
+         c[j++]=a[i];
+   }
+   c[j]='\0';
+   
+   return c;
+} 
+int main()
+{
+	int i;
+	char a[]="inaaaabb@@#c";
+	char* res;
+	res=removeAllDuplicates(a);
+	printf("\nThe maximun occuring caharacter is: %s",res);
+	return 0;
+}
