@@ -1,0 +1,32 @@
+//How to remove characters from the first String which are present in the second String
+
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+char* removeCommonCharacters(char* a,char *b){
+   int* c=(int*)calloc(256,sizeof(int));
+   for(int i=0;i<strlen(b);i++){
+       c[b[i]]++;
+   }
+   
+   int j=0;
+      char* d=(char*)calloc(strlen(a),sizeof(char));
+ for(int i=0;i<strlen(a);i++){
+       if(c[a[i]]==0){
+         d[j++]=a[i];
+       }
+   }
+   d[j]='\0';
+   return d;
+} 
+int main()
+{
+	int i;
+	char a[]="inaaaabb@@#c";
+	char b[]="abc";
+
+	char* res;
+	res=removeCommonCharacters(a,b);
+	printf("\nresult is: %s",res);
+	return 0;
+}
