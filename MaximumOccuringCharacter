@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+char maxOccuringChar(char* a){
+   int* b=(int*)calloc(256,sizeof(int));
+   for(int i=0;i<strlen(a);i++){
+       b[a[i]]++;
+   }
+   //To reduce number of iterations by traversing only to the locations of array with non zero elements
+   int max=-1;
+   char result=a[0];
+   for(int i=0;i<strlen(a);i++){
+       if(b[a[i]]>max){
+           max=b[a[i]];
+           result=a[i];
+       }
+   }
+   /*
+      //It will travese full array of size 256
+   int max=0;
+   int index=0;
+   for(int i=0;i<256;i++){
+       if(max<b[i]){
+        max=b[i];
+ index=i;
+       }
+   }
+   */
+   return (char)index;
+} 
+int main()
+{
+	int i;
+	char a[]="int$$$$$";
+	char res;
+	res=maxOccuringChar(a);
+	printf("\nThe maximun occuring caharacter is: %c",res);
+	return 0;
+}
